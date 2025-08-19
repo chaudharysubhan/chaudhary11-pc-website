@@ -1,0 +1,708 @@
+/* Reset default browser styles - removes all default margins, paddings and sets box-sizing */
+* {
+    margin: 0; /* Removes default margin from all elements */
+    padding: 0; /* Removes default padding from all elements */
+    box-sizing: border-box; /* Makes width/height include padding and border */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sets consistent font family */
+}
+
+/* Base font size for responsive design - 16px is standard for most browsers */
+html {
+    font-size: 16px; /* Base font size for rem units to reference */
+}
+
+/* CSS variables for consistent color scheme - centralized color management */
+:root {
+    --primary: #ffcc00; /* Primary yellow color for branding */
+    --secondary: #ff0000; /* Secondary red color for accents */
+    --dark: #0d0d0d; /* Dark background color */
+    --darker: #1a1a1a; /* Slightly lighter dark for contrast */
+    --light: #f5f5f5; /* Light color for text on dark backgrounds */
+    --gray: #333; /* Gray color for subtle elements */
+}
+
+/* Main body styling - sets overall page appearance */
+body {
+    background-color: var(--dark); /* Dark background base color */
+    color: var(--light); /* Light text color for readability */
+    line-height: 1.6; /* Increased line height for better readability */
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); /* Gradient background for depth */
+    min-height: 100vh; /* Ensures body is at least full viewport height */
+    max-width: 1400px; /* Maximum width for large screens */
+    margin: 0 auto; /* Centers the content horizontally */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+/* Header styling with sticky positioning and backdrop blur */
+header {
+    background-color: rgba(26, 26, 26, 0.9); /* Semi-transparent background */
+    padding: 12px 20px; /* Space inside the header */
+    text-align: center; /* Centers text content */
+    border-bottom: 2px solid var(--primary); /* Yellow bottom border for emphasis */
+    position: sticky; /* Sticks to the top when scrolling */
+    top: 0; /* Positions at the top of the viewport when sticky */
+    z-index: 100; /* Ensures header appears above other content */
+    display: flex; /* Uses flexbox for layout */
+    justify-content: space-between; /* Spreads items to opposite ends */
+    align-items: center; /* Centers items vertically */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    backdrop-filter: blur(5px); /* Adds blur effect to background */
+    width: 100%; /* Full width of the container */
+}
+
+/* Logo styling in header - creates a horizontal layout for logo elements */
+.logo {
+    display: flex; /* Uses flexbox for horizontal alignment */
+    align-items: center; /* Vertically centers the logo elements */
+    gap: 8px; /* Space between logo icon and text */
+    color: var(--primary); /* Yellow color for the logo text */
+    font-size: 1.5rem; /* Larger font size for logo */
+    font-weight: 700; /* Bold font weight for emphasis */
+}
+
+/* Logo icon styling - adds a different color to the icon */
+.logo i {
+    color: var(--secondary); /* Red color for the logo icon for contrast */
+}
+
+/* Navigation menu container - organizes navigation links */
+nav {
+    display: flex; /* Uses flexbox for horizontal alignment */
+    gap: 10px; /* Space between navigation links */
+    flex-wrap: wrap; /* Allows links to wrap on smaller screens */
+    justify-content: center; /* Centers the navigation links */
+}
+
+/* Navigation links styling - formats individual navigation links */
+nav a {
+    color: var(--light); /* Light text color for readability */
+    text-decoration: none; /* Removes underline from links */
+    padding: 6px 12px; /* Space inside each navigation link */
+    border-radius: 5px; /* Rounded corners for links */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    font-weight: 500; /* Medium font weight for better visibility */
+    position: relative; /* Required for absolute positioning of pseudo-elements */
+    font-size: 0.9rem; /* Slightly smaller font size for navigation */
+}
+
+/* Navigation links hover effect - changes color on hover */
+nav a:hover {
+    color: var(--primary); /* Changes to yellow on hover */
+}
+
+/* Underline animation for navigation links - creates animated underline effect */
+nav a::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Positions relative to the link */
+    bottom: 0; /* Positions at the bottom of the link */
+    left: 0; /* Aligns to the left edge */
+    width: 0; /* Starts with zero width for animation */
+    height: 2px; /* Height of the underline */
+    background-color: var(--primary); /* Yellow color for the underline */
+    transition: width 0.3s ease; /* Smooth animation for width change */
+}
+
+/* Underline animation on hover - expands underline to full width */
+nav a:hover::after {
+    width: 100%; /* Expands to full width on hover */
+}
+
+/* Active navigation link styling - highlights current page */
+nav a.active {
+    color: var(--primary); /* Yellow color for active link */
+}
+
+/* Active navigation link underline - shows full underline for active page */
+nav a.active::after {
+    width: 100%; /* Full width underline for active link */
+}
+
+/* Hero section - main banner area with centered content */
+.hero {
+    min-height: 80vh; /* Minimum height of 80% of viewport height */
+    display: flex; /* Uses flexbox for layout */
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    padding: 15px; /* Space inside the hero section */
+    text-align: center; /* Centers text content */
+    position: relative; /* Required for absolute positioning of pseudo-elements */
+    overflow: hidden; /* Hides content that exceeds the container */
+}
+
+/* Radial gradient background effect for hero section - adds visual interest */
+.hero::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Positions relative to the hero section */
+    top: 0; /* Aligns to the top edge */
+    left: 0; /* Aligns to the left edge */
+    width: 100%; /* Full width of the hero section */
+    height: 100%; /* Full height of the hero section */
+    background: radial-gradient(circle at center, rgba(255, 204, 0, 0.1) 0%, transparent 70%); /* Subtle yellow glow */
+    z-index: -1; /* Places behind other content */
+}
+
+/* Hero section heading - main title with emphasis */
+.hero h1 {
+    font-size: 2.8rem; /* Large font size for emphasis */
+    margin-bottom: 15px; /* Space below the heading */
+    color: var(--primary); /* Yellow color for the heading */
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.3); /* Subtle glow effect */
+}
+
+/* Hero section paragraph - descriptive text below heading */
+.hero p {
+    font-size: 1rem; /* Standard font size for paragraph */
+    max-width: 600px; /* Limits width for better readability */
+    margin-bottom: 30px; /* Space below the paragraph */
+    color: #ccc; /* Light gray color for better contrast */
+}
+
+/* Floating PC image container with animation - showcases product */
+.floating-pc {
+    width: 100%; /* Full width of the container */
+    max-width: 600px; /* Maximum width for larger screens */
+    margin: 40px auto; /* Centers the container with space above and below */
+    animation: float 6s ease-in-out infinite; /* Applies floating animation */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5)); /* Adds shadow for depth */
+    display: flex; /* Uses flexbox for layout */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+}
+
+/* PC image styling - formats the actual image */
+.pc-image {
+    width: 80%; /* 80% of the container width */
+    max-width: 500px; /* Maximum width for larger screens */
+    border-radius: 20px; /* Rounded corners for the image */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
+}
+
+/* Floating animation keyframes - defines the floating motion */
+@keyframes float {
+    0% {
+        transform: translateY(0); /* Starting position */
+    }
+
+    50% {
+        transform: translateY(-20px); /* Middle position (moved up) */
+    }
+
+    100% {
+        transform: translateY(0); /* Ending position (back to start) */
+    }
+}
+
+/* Primary button styling - call-to-action button */
+.btn {
+    display: inline-block; /* Allows width and height while remaining inline */
+    background-color: var(--primary); /* Yellow background color */
+    color: #000; /* Black text for contrast on yellow */
+    padding: 14px 32px; /* Generous padding for button size */
+    text-decoration: none; /* Removes underline from link buttons */
+    border-radius: 50px; /* Fully rounded corners */
+    font-weight: 600; /* Semi-bold text for emphasis */
+    text-transform: uppercase; /* All caps text for emphasis */
+    letter-spacing: 1px; /* Spacing between letters for readability */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    border: 2px solid var(--primary); /* Yellow border matching background */
+    box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3); /* Subtle glow effect */
+}
+
+/* Primary button hover effect - visual feedback on interaction */
+.btn:hover {
+    background-color: transparent; /* Becomes transparent on hover */
+    color: var(--primary); /* Text changes to yellow on hover */
+    transform: translateY(-5px); /* Button lifts up slightly */
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.4); /* Enhanced glow effect */
+}
+
+/* Secondary button styling - alternative button style */
+.btn-secondary {
+    background-color: transparent; /* Transparent background */
+    color: var(--primary); /* Yellow text color */
+    margin-left: 15px; /* Space between primary and secondary buttons */
+}
+
+/* Secondary button hover effect - inverts colors on hover */
+.btn-secondary:hover {
+    background-color: var(--primary); /* Background becomes yellow */
+    color: #000; /* Text becomes black */
+}
+
+/* General section styling - consistent spacing for content sections */
+section {
+    padding: 60px 15px; /* Vertical and horizontal padding */
+}
+
+/* Section title styling - consistent heading style across sections */
+.section-title {
+    text-align: center; /* Centers the title */
+    font-size: 2rem; /* Large font size for emphasis */
+    margin-bottom: 40px; /* Space below the title */
+    color: var(--primary); /* Yellow color for emphasis */
+    position: relative; /* For positioning the underline decoration */
+}
+
+/* Section title underline decoration - adds visual interest */
+.section-title::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Positions relative to the title */
+    bottom: -15px; /* Distance below the title */
+    left: 50%; /* Centers horizontally */
+    transform: translateX(-50%); /* Perfect centering adjustment */
+    width: 80px; /* Width of the underline */
+    height: 4px; /* Thickness of the underline */
+    background: var(--primary); /* Yellow color matching title */
+    border-radius: 2px; /* Slightly rounded edges */
+}
+
+/* Products grid layout - responsive product display */
+.products-grid {
+    display: grid; /* Uses CSS grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between grid items */
+    max-width: 1200px; /* Maximum width of the grid */
+    margin: 0 auto; /* Centers the grid horizontally */
+}
+
+/* Product card styling - individual product container */
+.product-card {
+    background: linear-gradient(145deg, #1a1a1a, #151515); /* Dark gradient background */
+    border-radius: 12px; /* Rounded corners */
+    overflow: hidden; /* Clips content to the border radius */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth hover transitions */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    position: relative; /* For positioning child elements */
+    border: 1px solid var(--gray); /* Subtle border */
+}
+
+/* Product card hover effect - visual feedback on interaction */
+.product-card:hover {
+    transform: translateY(-15px); /* Card lifts up on hover */
+    box-shadow: 0 15px 30px rgba(255, 204, 0, 0.2); /* Enhanced yellow glow */
+    border-color: var(--primary); /* Border changes to yellow */
+}
+
+/* Product badge (e.g., "New", "Sale") - highlights special products */
+.product-badge {
+    position: absolute; /* Positioned relative to the card */
+    top: 20px; /* Distance from top */
+    right: 20px; /* Distance from right */
+    background: var(--secondary); /* Blue background */
+    color: white; /* White text */
+    padding: 5px 15px; /* Vertical and horizontal padding */
+    border-radius: 30px; /* Fully rounded corners */
+    font-weight: 600; /* Semi-bold text */
+    z-index: 2; /* Ensures badge appears above other elements */
+}
+
+/* Product image container - holds the product image */
+.product-image {
+    height: 200px; /* Fixed height for consistency */
+    display: flex; /* Uses flexbox for centering */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    overflow: hidden; /* Prevents image overflow */
+    background: linear-gradient(45deg, #2a2a2a, #1a1a1a); /* Dark gradient background */
+}
+
+/* Product image styling - formats the actual image */
+.product-image img {
+    width: 90%; /* Slightly smaller than container */
+    height: 90%; /* Slightly smaller than container */
+    object-fit: contain; /* Maintains aspect ratio */
+    transition: transform 0.3s ease; /* Smooth zoom transition */
+}
+
+/* Product image hover zoom effect - enlarges image on hover */
+.product-card:hover .product-image img {
+    transform: scale(1.1); /* Zooms in by 10% */
+}
+
+/* Product content container - holds text information */
+.product-content {
+    padding: 25px; /* Space around content */
+}
+
+/* Product title styling - product name formatting */
+.product-card h3 {
+    font-size: 1.5rem; /* Large font size for emphasis */
+    margin-bottom: 15px; /* Space below title */
+    color: var(--primary); /* Yellow color for emphasis */
+}
+
+/* Product description styling - product details text */
+.product-card p {
+    color: #aaa; /* Light gray for readability */
+    margin-bottom: 15px; /* Space below paragraph */
+    line-height: 1.6; /* Increased line height for readability */
+}
+
+/* Product price container - displays the cost */
+.price {
+    display: block; /* Full width block element */
+    font-size: 1.3rem; /* Larger font for emphasis */
+    margin: 15px 0; /* Vertical spacing */
+}
+
+/* Original price (strikethrough) - shows discount comparison */
+.price del {
+    color: #777; /* Muted gray color for crossed-out price */
+    margin-right: 10px; /* Space between old and new price */
+}
+
+/* Sale price styling - highlights the current price */
+.price strong {
+    color: var(--primary); /* Yellow color for emphasis */
+    font-size: 1.8rem; /* Larger than regular price */
+}
+
+/* Testimonials section styling - customer review section */
+.testimonials {
+    background: linear-gradient(to bottom, #0d0d0d, #1a1a1a); /* Dark gradient background */
+    padding: 100px 20px; /* Generous vertical and horizontal padding */
+}
+
+/* Testimonials grid layout - responsive testimonial display */
+.testimonial-grid {
+    display: grid; /* Uses CSS grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 30px; /* Space between testimonials */
+    max-width: 1200px; /* Maximum width of the grid */
+    margin: 0 auto; /* Centers the grid horizontally */
+}
+
+/* Individual testimonial card - contains a single review */
+.testimonial-card {
+    background: rgba(40, 40, 40, 0.6); /* Semi-transparent dark background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 30px; /* Space inside the card */
+    border: 1px solid var(--gray); /* Subtle border */
+    transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Testimonial card hover effect - visual feedback on interaction */
+.testimonial-card:hover {
+    transform: translateY(-10px); /* Card lifts up on hover */
+    border-color: var(--primary); /* Border changes to yellow */
+}
+
+/* Testimonial header with avatar and name - reviewer information */
+.testimonial-header {
+    display: flex; /* Uses flexbox for layout */
+    align-items: center; /* Vertically centers items */
+    margin-bottom: 20px; /* Space below header */
+}
+
+/* User avatar styling - reviewer profile picture */
+.avatar {
+    width: 60px; /* Fixed width for consistency */
+    height: 60px; /* Fixed height for perfect circle */
+    border-radius: 50%; /* Creates circular shape */
+    background: linear-gradient(45deg, var(--primary), var(--secondary)); /* Gradient from yellow to blue */
+    display: flex; /* Uses flexbox for centering */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    margin-right: 20px; /* Space between avatar and name */
+    font-size: 1.5rem; /* Large font size for initials */
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+/* Testimonial author name - identifies the reviewer */
+.testimonial-info h4 {
+    color: var(--primary); /* Yellow color for emphasis */
+    font-size: 1.3rem; /* Larger font size */
+    margin-bottom: 5px; /* Small space below name */
+}
+
+/* Star rating styling - visual representation of review score */
+.rating {
+    color: var(--primary); /* Yellow stars */
+    font-size: 1rem; /* Standard font size */
+}
+
+/* Testimonial text content - the actual review */
+.testimonial-content {
+    color: #ccc; /* Light gray for readability */
+    font-style: italic; /* Italicized for quote-like appearance */
+    line-height: 1.7; /* Increased line height for readability */
+}
+
+/* Newsletter section styling - email subscription area */
+.newsletter {
+    background: linear-gradient(to right, #1a1a1a, #0d0d0d); /* Dark gradient background */
+    padding: 100px 20px; /* Generous vertical and horizontal padding */
+    text-align: center; /* Centers all content */
+}
+
+/* Newsletter form container - holds input and button */
+.newsletter-form {
+    max-width: 600px; /* Maximum width for better readability */
+    margin: 40px auto 0; /* Centers form with space above */
+    display: flex; /* Uses flexbox for layout */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 15px; /* Space between form elements */
+    justify-content: center; /* Centers form elements */
+}
+
+/* Newsletter input field styling - email input box */
+.newsletter-form input {
+    flex: 1; /* Grows to fill available space */
+    min-width: 250px; /* Minimum width for usability */
+    padding: 16px 25px; /* Generous padding for easy interaction */
+    border: 2px solid var(--gray); /* Subtle border */
+    border-radius: 50px; /* Fully rounded corners */
+    background: transparent; /* Transparent background */
+    color: white; /* White text for contrast */
+    font-size: 1rem; /* Standard font size */
+}
+
+/* Newsletter input focus state - visual feedback when selected */
+.newsletter-form input:focus {
+    outline: none; /* Removes default browser outline */
+    border-color: var(--primary); /* Changes border to yellow when focused */
+}
+
+/* Newsletter submit button - action button for form */
+.newsletter-form .btn {
+    padding: 16px 40px; /* Larger padding for button */
+}
+
+/* Footer section styling - site footer area */
+footer {
+    background: #0a0a0a; /* Very dark background */
+    padding: 60px 20px 30px; /* Padding: top, horizontal, bottom */
+    border-top: 2px solid var(--primary); /* Yellow top border */
+}
+
+/* Footer grid layout - organizes footer content */
+.footer-grid {
+    display: grid; /* Uses CSS grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 40px; /* Space between columns */
+    max-width: 1200px; /* Maximum width */
+    margin: 0 auto; /* Centers horizontally */
+}
+
+/* Footer column headings - section titles in footer */
+.footer-column h3 {
+    color: var(--primary); /* Yellow color for emphasis */
+    font-size: 1.5rem; /* Larger font size */
+    margin-bottom: 25px; /* Space below heading */
+    position: relative; /* For positioning the underline */
+    padding-bottom: 10px; /* Space for underline */
+}
+
+/* Footer heading underline - decorative element */
+.footer-column h3::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Positions relative to the heading */
+    bottom: 0; /* Aligns to bottom of heading */
+    left: 0; /* Aligns to left of heading */
+    width: 50px; /* Width of the underline */
+    height: 3px; /* Thickness of the underline */
+    background: var(--primary); /* Yellow color matching heading */
+}
+
+/* Footer paragraph text - descriptive text in footer */
+.footer-column p {
+    color: #aaa; /* Light gray for readability */
+    line-height: 1.7; /* Increased line height for readability */
+    margin-bottom: 20px; /* Space below paragraph */
+}
+
+/* Social media links container - holds social icons */
+.social-links {
+    display: flex; /* Uses flexbox for layout */
+    gap: 15px; /* Space between icons */
+    margin-top: 20px; /* Space above social links */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* Social media icon styling - individual social platform links */
+.social-links a {
+    display: flex; /* Uses flexbox for centering */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    width: 45px; /* Fixed width for circle */
+    height: 45px; /* Fixed height for circle */
+    border-radius: 50%; /* Creates circular shape */
+    background: var(--darker); /* Dark background */
+    color: var(--primary); /* Yellow icon color */
+    font-size: 1.2rem; /* Icon size */
+    transition: all 0.3s ease; /* Smooth hover transition */
+    position: relative; /* For positioning effects */
+    overflow: hidden; /* Clips content to border radius */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    margin: 8px; /* Space around each icon */
+    border: 1px solid rgba(255, 204, 0, 0.2); /* Subtle yellow border */
+}
+
+/* Social media icon hover effect - visual feedback on interaction */
+.social-links a:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    color: #fff; /* White icon on hover */
+}
+
+/* Social media platform-specific colors on hover - brand colors */
+.social-links a:nth-child(1):hover { background: #3b5998; border-color: #3b5998; } /* Facebook - brand blue */
+.social-links a:nth-child(2):hover { background: #1da1f2; border-color: #1da1f2; } /* Twitter - brand blue */
+.social-links a:nth-child(3):hover { background: #e1306c; border-color: #e1306c; } /* Instagram - brand pink */
+.social-links a:nth-child(4):hover { background: #ff0000; border-color: #ff0000; } /* YouTube - brand red */
+.social-links a:nth-child(5):hover { background: #7289da; border-color: #7289da; } /* Discord - brand purple */
+.social-links a:nth-child(6):hover { background: #0077b5; border-color: #0077b5; } /* LinkedIn - brand blue */
+
+/* Social media icon inner element - positions the icon */
+.social-links a i {
+    position: relative; /* For stacking context */
+    z-index: 1; /* Ensures icon appears above any effects */
+}
+
+/* Icon scale effect on hover - enlarges icon when hovered */
+.social-links a:hover i {
+    transform: scale(1.2); /* Increases size by 20% */
+    transition: transform 0.3s ease; /* Smooth scaling animation */
+}
+
+/* Footer navigation links list - removes default list styling */
+.footer-links {
+    list-style: none; /* Removes bullet points */
+}
+
+/* Footer navigation list items - spacing between links */
+.footer-links li {
+    margin-bottom: 15px; /* Space between list items */
+}
+
+/* Footer link styling - formats navigation links */
+.footer-links a {
+    color: #aaa; /* Light gray text */
+    text-decoration: none; /* Removes underline */
+    transition: all 0.3s ease; /* Smooth hover transition */
+    display: flex; /* Uses flexbox for icon alignment */
+    align-items: center; /* Vertically centers icon with text */
+}
+
+/* Footer link hover effect - visual feedback on interaction */
+.footer-links a:hover {
+    color: var(--primary); /* Changes to yellow on hover */
+    padding-left: 5px; /* Slight indent effect on hover */
+}
+
+/* Footer link icon styling - formats icons next to links */
+.footer-links a i {
+    margin-right: 10px; /* Space between icon and text */
+    color: var(--primary); /* Yellow icon color */
+}
+
+/* Social media section in footer - dedicated social links area */
+.social-media-section {
+    text-align: center; /* Centers all content */
+    padding: 40px 0; /* Vertical padding only */
+    margin-top: 40px; /* Space above section */
+    border-top: 1px solid var(--gray); /* Subtle top border */
+    background: linear-gradient(to right, rgba(26, 26, 26, 0.8), rgba(10, 10, 10, 0.8), rgba(26, 26, 26, 0.8)); /* Gradient background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Social media section heading - section title */
+.social-media-section h3 {
+    color: var(--primary); /* Yellow color for emphasis */
+    font-size: 1.8rem; /* Large font size */
+    margin-bottom: 25px; /* Space below heading */
+    position: relative; /* For positioning the underline */
+    display: inline-block; /* Allows width to match content */
+    padding-bottom: 10px; /* Space for underline */
+}
+
+/* Social media section heading underline - decorative element */
+.social-media-section h3::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Positions relative to the heading */
+    bottom: 0; /* Aligns to bottom of heading */
+    left: 50%; /* Centers horizontally */
+    transform: translateX(-50%); /* Perfect centering adjustment */
+    width: 80px; /* Width of the underline */
+    height: 3px; /* Thickness of the underline */
+    background: var(--primary); /* Yellow color matching heading */
+}
+
+/* Social links container in social media section - holds social icons */
+.social-media-section .social-links {
+    justify-content: center; /* Centers icons horizontally */
+    margin: 0 auto; /* Centers container */
+    display: flex; /* Uses flexbox for layout */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 15px; /* Space between icons */
+}
+
+/* Stable social media icons with hover effect only - consistent styling */
+.social-media-section .social-links a {
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    margin: 0; /* Removes default margin */
+}
+
+/* Social media icon hover effect in social media section - visual feedback */
+.social-media-section .social-links a:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* CSS variables for potential animation delays (currently unused) - for staggered animations */
+.social-media-section .social-links a:nth-child(1) { --i: 1; } /* First icon delay variable */
+.social-media-section .social-links a:nth-child(2) { --i: 2; } /* Second icon delay variable */
+.social-media-section .social-links a:nth-child(3) { --i: 3; } /* Third icon delay variable */
+.social-media-section .social-links a:nth-child(4) { --i: 4; } /* Fourth icon delay variable */
+.social-media-section .social-links a:nth-child(5) { --i: 5; } /* Fifth icon delay variable */
+.social-media-section .social-links a:nth-child(6) { --i: 6; } /* Sixth icon delay variable */
+
+/* Copyright text in footer - legal information */
+.copyright {
+    text-align: center; /* Centers the text */
+    padding-top: 40px; /* Space above copyright */
+    color: #777; /* Medium gray color */
+    font-size: 0.9rem; /* Smaller font size */
+    border-top: 1px solid var(--gray); /* Subtle top border */
+    margin-top: 40px; /* Space above the border */
+}
+
+/* Media query for responsive design on tablets and mobile devices - adjusts layout for smaller screens */
+@media (max-width: 768px) {
+    /* Stack header elements vertically on small screens - improves mobile layout */
+    header {
+        flex-direction: column; /* Changes from row to column */
+        gap: 20px; /* Space between stacked elements */
+    }
+
+    /* Reduce hero heading size on small screens - improves readability */
+    .hero h1 {
+        font-size: 2.5rem; /* Smaller font size */
+    }
+
+    /* Stack hero buttons vertically on small screens - better touch targets */
+    .hero-buttons {
+        display: flex; /* Uses flexbox for layout */
+        flex-direction: column; /* Changes from row to column */
+        gap: 15px; /* Space between buttons */
+    }
+
+    /* Remove left margin from secondary button when stacked - prevents misalignment */
+    .btn-secondary {
+        margin-left: 0; /* Removes horizontal margin */
+    }
+
+    /* Adjust floating PC image margins on small screens - better spacing */
+    .floating-pc {
+        margin: 20px auto; /* Reduced vertical margins */
+    }
+}
+
+/* Logo image styling - formats the logo image in header */
+.logo-img {
+    height: 50px; /* Fixed height for consistency */
+    /* Adjust height as needed */
+    margin-right: 0px; /* No right margin */
+    vertical-align: middle; /* Aligns with adjacent text */
+}
